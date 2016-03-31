@@ -71,6 +71,11 @@ $navbar-default-bg: #00004d;
     padding-bottom: 10px;
 }
 
+.listing {
+    list-style: none;    // erases list item dots
+    padding-left: none;
+    
+}
 
 footer {
     margin-top: 45px;

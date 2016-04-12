@@ -1,6 +1,5 @@
 class ArticlesController < ApplicationController
-  ## run "set_article" method before specified methods
-  before_action :set_article, only: [:edit,:update,:show,:destroy]
+  before_action :set_article, only: [:edit, :update, :show, :destroy]
   before_action :require_user, except: [:index, :show]
   before_action :require_same_user, only: [:edit, :update, :destroy]
   
@@ -13,7 +12,6 @@ class ArticlesController < ApplicationController
   end
   
   def edit
-    
   end
   
   def create
@@ -56,7 +54,7 @@ class ArticlesController < ApplicationController
     end
     
     def require_same_user
-      if current_user != @article.user and !current_user.admin?
+      if (current_user != @article.user) and !current_user.admin?
         flash[:danger] = "You can only edit or delete your own articles"
         redirect_to root_path
       end

@@ -39,12 +39,13 @@ class UsersController < ApplicationController
    end
    
    def destroy
+     ##byebug
      @user = User.find(params[:id])
      @user.destroy
      flash[:danger] = "User and all articles created by user have been deleted"
      redirect_to users_path
    end
-   
+
    private
    def user_params
      params.require(:user).permit(:username, :email, :password)
@@ -63,7 +64,8 @@ class UsersController < ApplicationController
    
    def require_admin
      if logged_in? and !current_user.admin?
-       flash[:danger] = "Only admin users can perform that action"  
+       flash[:danger] = "Only admin users can perform that action" 
+       redirect_to root_path
      end
    end
 end
